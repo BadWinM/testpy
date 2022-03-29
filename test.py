@@ -1,26 +1,11 @@
-message['Date'] = f_time[0] + ', ' + f_time[2] + ' ' + f_time[1] + ' ' + f_time[4] + ' ' + f_time[3] + ' +0100' + '\r\n'
-if nature == 'registration':
-    message['Subject'] = "inscription"
-    msg = "Bomjour, " + session['user']['name'] + " merci de valider votre inscription  en cliquant sur  ce lien " + lien 
-elif nature == 'password':
-    message['Subject'] = "Reinitialisation du mot de passe" 
-    msg = "Bomjour, merci de suivre ce lien pour réinitialiser votre mot de passe " + lien
-elif nature == 'fake':
-    message['Subject'] = "Declaration de faux compte" 
-    user = session['user']['name']
-    fake = unique
-    msg = "l'utilisateur " + user + " a indiqué que le compte " + fake + ' est un faux'
-message.attach(MIMEText(msg.encode('utf-8'), 'plain', 'utf-8'))  
-serveur = smtplib.SMTP('mail.infomaniak.com', 587)  # # Connexion au serveur sortant 
-serveur.starttls()  # # Spécification de la sécurisation
-
-serveur.login("jiasdlj", "coucoubg")
-
-def coordonnees(c):  # separe latitude et longitude  
-    debut = c.find('(')
-    virgule = c.find(',')
-    fin = c.find(')')
-    lat = c[debut + 1:virgule]
-    lon = c[virgule + 1:fin]
-    coor = (lat, lon)
-    return (coor)
+import time;
+reverseCount = 15
+count = 1
+print("%02d" % reverseCount)
+if count % 1 == 0:
+    print("\n\033[1mPlease wait a minute to display the rest of the files\033[0m")
+    while reverseCount >= 0:
+        print(f"\r⏰ \033[96m{'%02d' % reverseCount} seconds left\033[0m", end = '\r')
+        time.sleep(0.5)
+        reverseCount -= 1
+    print()
